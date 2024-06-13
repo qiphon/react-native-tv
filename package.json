@@ -5,16 +5,28 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "devtool": "npx react-devtools",
     "lint": "eslint .",
-    "start": "react-native start",
+    "start": "react-native start --experimental-debugger",
     "test": "jest"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "@realm/react": "^0.7.0",
+    "cheerio": "^1.0.0-rc.12",
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-fs": "^2.20.0",
+    "react-native-orientation-locker": "^1.7.0",
     "react-native-permissions": "^4.1.5",
-    "react-native-share": "^10.2.1"
+    "react-native-safe-area-context": "^4.10.1",
+    "react-native-screens": "^3.31.1",
+    "react-native-share": "^10.2.1",
+    "react-native-toast-notifications": "^3.4.0",
+    "react-native-vlc-media-player": "^1.0.67",
+    "realm": "^12.9.0",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -31,6 +43,7 @@
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-test-renderer": "18.2.0",
+    "reactotron-react-native": "^5.1.7",
     "typescript": "5.0.4"
   },
   "engines": {

@@ -58,6 +58,7 @@ target 'AwesomeProject1' do
     :path => config[:reactNativePath],
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
+    # :flipper_configuration => FlipperConfiguration.enabled(["Debug"], { 'Flipper' => '0.240.0' })
   )
 
   target 'AwesomeProject1Tests' do
