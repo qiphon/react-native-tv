@@ -2,44 +2,47 @@
  * @file 天气预报展示
  */
 
-import {useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 import {getWeather} from '../../utils/weather';
-import {Weather} from '../../utils/weather/types';
+import {useRequest} from 'ahooks';
+import {Loading} from '../Loading';
 
 export const Weathers = ({weatherAddr}: {weatherAddr?: string}) => {
-  const [weathers, setWeathers] = useState<Weather[]>([]);
-  useEffect(() => {
-    getWeather(weatherAddr).then(res => {
-      setWeathers(res || []);
-    });
-  }, [weatherAddr]);
-  return (
-    <Wrapper>
-      <Title>
-        <TitleText>{weatherAddr}今日</TitleText>
-        <TitleSmall>
-          空气质量：{weathers?.[0]?.airQuality || '无数据'}
-        </TitleSmall>
-        <TitleSmall>
-          天气预警：{weathers?.[0]?.weatherAlert || '无数据'}
-        </TitleSmall>
-      </Title>
+  const {data: weathers, loading} = useRequest(
+    () => getWeather(weatherAddr).then(res => res || []),
+    {
+      refreshDeps: [weatherAddr],
+    },
+  );
 
-      <WeatherWrapper>
-        {weathers.map(item => {
-          return (
-            <WeatherItem key={item.date}>
-              <TextSmall>{item.week}</TextSmall>
-              <TextSmall>{item.date}</TextSmall>
-              <TextSmall>{item.temperature}</TextSmall>
-              <TextSmall>{item.weather}</TextSmall>
-              <Image source={{uri: item.image}} />
-            </WeatherItem>
-          );
-        })}
-      </WeatherWrapper>
-    </Wrapper>
+  return (
+    <Loading animating={loading}>
+      <Wrapper>
+        <Title>
+          <TitleText>{weatherAddr}今日</TitleText>
+          <TitleSmall>
+            空气质量：{weathers?.[0]?.airQuality || '无数据'}
+          </TitleSmall>
+          <TitleSmall>
+            天气预警：{weathers?.[0]?.weatherAlert || '无数据'}
+          </TitleSmall>
+        </Title>
+
+        <WeatherWrapper>
+          {weathers?.map(item => {
+            return (
+              <WeatherItem key={item.date}>
+                <TextSmall>{item.week}</TextSmall>
+                <TextSmall>{item.date}</TextSmall>
+                <TextSmall>{item.temperature}</TextSmall>
+                <TextSmall>{item.weather}</TextSmall>
+                <Image source={{uri: item.image}} />
+              </WeatherItem>
+            );
+          })}
+        </WeatherWrapper>
+      </Wrapper>
+    </Loading>
   );
 };
 
