@@ -31,12 +31,12 @@ export const Weathers = ({weatherAddr}: {weatherAddr?: string}) => {
         <WeatherWrapper>
           {weathers?.map(item => {
             return (
-              <WeatherItem key={item.date}>
+              <WeatherItem key={item.date + item.week}>
                 <TextSmall>{item.week}</TextSmall>
-                <TextSmall>{item.date}</TextSmall>
+                {item.date && <TextSmall>{item.date}</TextSmall>}
                 <TextSmall>{item.temperature}</TextSmall>
                 <TextSmall>{item.weather}</TextSmall>
-                <Image source={{uri: item.image}} />
+                {!!item.image && <Image source={{uri: item.image}} />}
               </WeatherItem>
             );
           })}
