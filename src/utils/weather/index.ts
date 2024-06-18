@@ -15,12 +15,11 @@ const readWeather = (path: string) => {
   return readFile(path)
     .then(res => {
       const $ = load(res);
-      console.log(path);
       let list7Day: Weather[] = [];
       // 移动端页面是这个
       const weatherCard = $('#mohe-m-entity--weather_city .mh-weather-weeks');
       // 安卓返回的是手机版的数据
-      if (weatherCard) {
+      if (weatherCard.length > 0) {
         const children = weatherCard
           .find('div.mh-week-head')
           ?.children('.mh-week-day');
@@ -57,7 +56,6 @@ const readWeather = (path: string) => {
             '#mohe-weather .mh-tab-cont.js-mh-tab-cont .g-slider-item.js-mh-item',
           ),
         ];
-
         let todayWeatherItemIndex = weatherItems?.findIndex(item => {
           return $(item).find('.mh-week').text().includes('今天');
         });
@@ -89,18 +87,20 @@ const readWeather = (path: string) => {
 /** 获取天气信息 */
 export const getWeather = (name?: string) => {
   const addr = name || defaultCfg.weatherAddr;
-  const path = downloadPath[DownloadType.weather]() + addr;
+  const path = downloadPath[DownloadType.weather](addr);
   return RNFetchBlob.exists(path).then(bool => {
     if (bool) {
       return readWeather(path);
     } else {
+      // RNFetchBlob.unlink(path);
       return download(downloadUrl[DownloadType.weather](addr), path)
         .catch(err =>
           console.log(err, '------download weather HTML error -----------'),
         )
-        .then(() => {
-          //   console.log(path, 'res load weather', res);
-          return readWeather(path);
+        .then(res => {
+          // console.log(path, 'res load weather', res);
+          if (res?.statusCode === 200) return readWeather(path);
+          return [];
         });
     }
   });
