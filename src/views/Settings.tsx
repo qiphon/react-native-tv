@@ -7,12 +7,14 @@ import {Page} from '../components/Page';
 import {useState} from 'react';
 import {useAddNewSettingCfg} from '../store/hooks';
 import {useToast} from 'react-native-toast-notifications';
+import {feedback} from '../utils/feedback';
 
 export const Settings = () => {
   const [_, newest, create] = useAddNewSettingCfg();
   const [newWeatherAddr, setNewWeatherAddr] = useState('');
   const [newCfg, setNewCfg] = useState('');
   const Toast = useToast();
+  const [feedbackText, setFeedbackText] = useState('');
 
   return (
     <Page>
@@ -68,6 +70,27 @@ export const Settings = () => {
           }}
         />
       </Row>
+      <Row>
+        <RowKey>反 馈</RowKey>
+        <CfgAddr
+          keyboardType="default"
+          placeholder="请输入反馈内容"
+          multiline
+          onChange={ev => {
+            setFeedbackText(ev.nativeEvent.text);
+          }}
+        />
+        <AddrConfirmBtn
+          title="确认"
+          onPress={() => {
+            feedback(feedbackText).then(res => {
+              if (res?.StatusMessage === 'success') {
+                Toast.show('反馈成功');
+              }
+            });
+          }}
+        />
+      </Row>
     </Page>
   );
 };
@@ -89,6 +112,8 @@ const CfgAddr = styled.TextInput`
 const RowKey = styled.Text`
   color: #fff;
   font-size: 16px;
+  min-width: 70px;
+  text-align: right;
 `;
 
 const Row = styled.View`
