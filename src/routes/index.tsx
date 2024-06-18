@@ -3,6 +3,7 @@ import {Home} from '../views/Home';
 import {RoutePath} from './paths';
 import {Settings} from '../views/Settings';
 import {Live} from '../views/Lives';
+import {Yangshi} from '../views/YangShi';
 
 export const routes: RouteConfig<any, RoutePath, any, any, any>[] = [
   {
@@ -22,6 +23,13 @@ export const routes: RouteConfig<any, RoutePath, any, any, any>[] = [
   {
     name: RoutePath.Lives,
     component: Live,
+    options: {
+      header: () => null,
+    },
+  },
+  {
+    name: RoutePath.Yangshi,
+    component: Yangshi,
     options: {
       header: () => null,
     },

@@ -10,6 +10,10 @@ export const Navs = [
     path: RoutePath.Lives,
   },
   {
+    title: '央视频',
+    path: RoutePath.Yangshi,
+  },
+  {
     title: '设置',
     path: RoutePath.Settings,
   },
