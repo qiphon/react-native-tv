@@ -1,4 +1,8 @@
 PODS:
+  - amazon-ivs-react-native-player (1.5.0):
+    - AmazonIVSPlayer (~> 1.23.0)
+    - React-Core
+  - AmazonIVSPlayer (1.23.0)
   - boost (1.83.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.74.1)
@@ -7,7 +11,6 @@ PODS:
   - hermes-engine (0.74.1):
     - hermes-engine/Pre-built (= 0.74.1)
   - hermes-engine/Pre-built (0.74.1)
-  - MobileVLCKit (3.5.1)
   - RCT-Folly (2024.01.01.00):
     - boost
     - DoubleConversion
@@ -936,14 +939,35 @@ PODS:
   - React-Mapbuffer (0.74.1):
     - glog
     - React-debug
+  - react-native-idle-timer (2.2.3):
+    - React-Core
   - react-native-orientation-locker (1.7.0):
+    - React-Core
+  - react-native-quick-md5 (3.0.6):
     - React-Core
   - react-native-safe-area-context (4.10.1):
     - React-Core
-  - react-native-vlc-media-player (1.0.38):
-    - MobileVLCKit (= 3.5.1)
-    - React
-    - TVVLCKit (= 3.5.1)
+  - react-native-webview (13.10.3):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - React-nativeconfig (0.74.1)
   - React-NativeModulesApple (0.74.1):
     - glog
@@ -1207,6 +1231,7 @@ PODS:
   - Yoga (0.0.0)
 
 DEPENDENCIES:
+  - amazon-ivs-react-native-player (from `../node_modules/amazon-ivs-react-native-player`)
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -1239,9 +1264,11 @@ DEPENDENCIES:
   - React-jsitracing (from `../node_modules/react-native/ReactCommon/hermes/executor/`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - react-native-idle-timer (from `../node_modules/react-native-idle-timer`)
   - react-native-orientation-locker (from `../node_modules/react-native-orientation-locker`)
+  - react-native-quick-md5 (from `../node_modules/react-native-quick-md5`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
-  - react-native-vlc-media-player (from `../node_modules/react-native-vlc-media-player`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1274,10 +1301,12 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - MobileVLCKit
+    - AmazonIVSPlayer
     - SocketRocket
 
 EXTERNAL SOURCES:
+  amazon-ivs-react-native-player:
+    :path: "../node_modules/amazon-ivs-react-native-player"
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
@@ -1339,12 +1368,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-idle-timer:
+    :path: "../node_modules/react-native-idle-timer"
   react-native-orientation-locker:
     :path: "../node_modules/react-native-orientation-locker"
+  react-native-quick-md5:
+    :path: "../node_modules/react-native-quick-md5"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
-  react-native-vlc-media-player:
-    :path: "../node_modules/react-native-vlc-media-player"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1405,13 +1438,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  amazon-ivs-react-native-player: b7a00b9d91f8206b1fa6c85caee17528efbe423c
+  AmazonIVSPlayer: 056aa543826328b578f51d5f3a1ac47b227d813d
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 898d14d17bf19e2435cafd9ea2a1033efe445709
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 16b8530de1b383cdada1476cf52d1b52f0692cbc
-  MobileVLCKit: 144d5f565512d1147d63b0fa1379231b3fd66535
   RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
   RCTDeprecation: efb313d8126259e9294dc4ee0002f44a6f676aba
   RCTRequired: f49ea29cece52aee20db633ae7edc4b271435562
@@ -1436,9 +1470,11 @@ SPEC CHECKSUMS:
   React-jsitracing: 233d1a798fe0ff33b8e630b8f00f62c4a8115fbc
   React-logger: 7e7403a2b14c97f847d90763af76b84b152b6fce
   React-Mapbuffer: 11029dcd47c5c9e057a4092ab9c2a8d10a496a33
+  react-native-idle-timer: b4e9ff189950bcd3ba03257d9f033f3432341db8
   react-native-orientation-locker: 5819fd23ca89cbac0d736fb4314745f62716d517
+  react-native-quick-md5: 9a4cb8201cd0b1866e374ac19d530da0964c0aed
   react-native-safe-area-context: dcab599c527c2d7de2d76507a523d20a0b83823d
-  react-native-vlc-media-player: 0f9860bded57cd6764ac55b5c0e97347069cb40a
+  react-native-webview: 66c0e45a5aa931d7deada77e69042020a86f1aaa
   React-nativeconfig: b0073a590774e8b35192fead188a36d1dca23dec
   React-NativeModulesApple: df46ff3e3de5b842b30b4ca8a6caae6d7c8ab09f
   React-perflogger: 3d31e0d1e8ad891e43a09ac70b7b17a79773003a

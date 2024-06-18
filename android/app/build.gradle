@@ -113,6 +113,11 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    // enable IPv6 not work
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.14'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.14'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:5.0.0-alpha.14'
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
