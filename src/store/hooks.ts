@@ -1,6 +1,10 @@
+/**
+ * @file 只存放系统必要的 hooks （偏重要的）
+ */
 import {useQuery, useRealm} from '@realm/react';
 import {defaultCfg, SettingCfg} from './settingsCfg';
 import {useEffect} from 'react';
+import {RealmTableName} from './const';
 
 export const useQuerySettingCfg = () => {
   const realm = useQuery(SettingCfg);
@@ -29,7 +33,7 @@ export const useAddNewSettingCfg = () => {
         realm.delete(values[0]);
       }
 
-      realm.create('SettingCfg', {
+      realm.create(RealmTableName.SettingCfg, {
         playAddr: cfg.playAddr ?? newest?.playAddr ?? defaultCfg.playAddr,
         weatherAddr:
           cfg.weatherAddr ?? newest?.weatherAddr ?? defaultCfg.weatherAddr,

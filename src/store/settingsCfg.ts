@@ -3,11 +3,10 @@
  */
 
 import Realm, {ObjectSchema} from 'realm';
-
-export const RealmVersion = 7;
+import {RealmTableName} from './const';
 
 export const defaultCfg = {
-  playAddr: '',
+  playAddr: 'https://盒子迷.top/禁止贩卖',
   weatherAddr: '北京',
 };
 
@@ -17,7 +16,7 @@ export class SettingCfg extends Realm.Object<any> {
   weatherAddr!: string;
 
   static schema: ObjectSchema = {
-    name: 'SettingCfg',
+    name: RealmTableName.SettingCfg,
     // primaryKey: '_id',
     properties: {
       //   _id: 'objectId',
