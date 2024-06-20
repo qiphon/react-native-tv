@@ -16,3 +16,7 @@ react-native 模式下视频播放器下的 dom 渲染太慢，不知道是不�
 - CMD + D 出现操作菜单
 
 - CMD + R 代码更新
+
+### 使用到的工具
+
+- [app icon 生成](https://easyappicon.com/)
